@@ -1,0 +1,136 @@
+<div class="document-title">
+  <div class="container">
+    <h1>Company Detail</h1>
+  </div><!-- /.container -->
+</div><!-- /.document-title -->
+
+<div class="document-breadcrumb">
+  <div class="container">
+    <ul class="breadcrumb">
+      <li><a [routerLink]="['']">Home</a></li>
+      <li><a [routerLink]="['/companies']">Companies</a></li>
+      <li><a [routerLink]="['/company-detail/' + company_id]">{{model.name}}</a></li>
+    </ul>
+  </div><!-- /.container -->
+</div><!-- /.document-title -->
+
+<div class="container">
+  <alert></alert>
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="company-card">
+        <div class="company-card-image">
+          <span>Top Employeer</span>
+          <a [routerLink]="['/company-detail/' + company_id]">
+            <caroimage [uri]="model.logo" [alt]="'assets/img/tmp/dropbox.png'"></caroimage>
+          </a>
+        </div><!-- /.company-card-image -->
+
+        <div class="company-card-data">
+          <dl>
+            <dt>Website</dt>
+            <dd><a href="http://example.com">www.example.com</a></dd>
+
+            <dt>E-mail</dt>
+            <dd><a href="#">{{model.email}}</a></dd>
+
+            <dt>Phone</dt>
+            <dd>{{model.phone}}</dd>
+
+            <dt>Address</dt>
+            <dd>
+              {{model.address1}}, {{model.address2}},<br>
+              {{model.city}}, {{model.contry}}
+            </dd>
+          </dl>
+        </div><!-- /.company-card-data -->
+      </div><!-- /.company-card -->
+
+
+      <div class="widget">
+        <ul class="social-links">
+          <li><a [href]="model.lnk_facebook"><i class="fa fa-facebook"></i></a></li>
+          <li><a [href]="model.lnk_twitter"><i class="fa fa-twitter"></i></a></li>
+          <li><a [href]="model.lnk_linkedin"><i class="fa fa-linkedin"></i></a></li>
+          <li><a [href]="model.lnk_tumblr"><i class="fa fa-tumblr"></i></a></li>
+        </ul>
+      </div><!-- /.widget -->
+
+      <div class="widget">
+        <h2>Contact Company</h2>
+
+        <form method="get" action="?">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Your E-mail">
+          </div><!-- /.form-group -->
+
+          <div class="form-group">
+            <textarea class="form-control" rows="5" placeholder="Your Message"></textarea>
+          </div><!-- /.form-group -->
+
+          <button class="btn btn-secondary pull-right" type="submit">Post Message</button>
+        </form>
+      </div><!-- /.widget -->
+    </div><!-- /.col-* -->
+
+    <div class="col-sm-8">
+      <div class="company-header">
+        <h1>{{model.name}} <span>{{model.industry}}</span></h1>
+
+        <a href="#" class="btn btn-secondary">Favorite</a>
+        <a href="#" class="btn btn-default">Receive updates</a>
+        <a href="#" class="btn btn-default">Follow</a>
+      </div><!-- /.company-header -->
+
+      <div class="company-stats">
+        <div class="company-stat">
+          <span>Positions</span>
+          <strong>{{model.job_count}}</strong>
+        </div><!-- /.company-stat -->
+
+        <div class="company-stat">
+          <span>Employees</span>
+          <strong>{{model.number_employee}}</strong>
+        </div><!-- /.company-stat -->
+
+        <div class="company-stat">
+          <span>Followers</span>
+          <strong>324</strong>
+        </div><!-- /.company-stat -->
+      </div><!-- /.company-stat -->
+
+      <h3 class="page-header">Company Profile</h3>
+
+      <p>
+        {{model.description}}
+      </p>
+
+      <h3 class="page-header">Open Positions</h3>
+
+      <div class="positions-list">
+        <div *ngFor="let item of jobs.results" class="positions-list-item">
+          <h2><a [routerLink]="['/job-detail/' + item.id]">{{item.name}}</a></h2>
+          <h3>
+            <span><caroimage [uri]="item.company?.logo" [alt]="'assets/img/tmp/dropbox.png'"></caroimage></span>
+            {{item.location.city}}, {{item.location.name}} <br>
+          </h3>
+
+          <div class="position-list-item-date">{{item.created_date|date:'MM/dd/yyyy'}}</div><!-- /.position-list-item-date -->
+          <div class="position-list-item-action">
+            <a *ngIf="!isSaved(item.id); else job_saved" href="javascript:void(0)" (click)="saveJob(item.id)">Save Position</a>
+            <ng-template #job_saved>saved</ng-template>
+          </div><!-- /.position-list-item-action -->
+        </div><!-- /.positions-list-item -->
+      </div><!-- /.positions-list -->
+
+      <div class="center">
+        <pagination [(ngModel)]="currentPage"
+                    [totalItems]="jobs.count"
+                    [itemsPerPage]="20"
+                    (pageChanged)="pageChanged($event)"
+                    previousText="&lsaquo;" nextText="&rsaquo;"
+                    firstText="&laquo;" lastText="&raquo;"></pagination>
+      </div>
+    </div><!-- /.col-sm-8 -->
+  </div><!-- /.row -->
+</div><!-- /.container -->

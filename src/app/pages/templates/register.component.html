@@ -1,0 +1,183 @@
+<div class="document-title">
+  <div class="container">
+    <h1 class="center">Account Registration</h1>
+  </div><!-- /.container -->
+</div>
+
+<div class="container">
+  <alert></alert>
+  <div class="row">
+    <div class="col-sm-12">
+      <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active">
+          <a href="#personal" aria-controls="personal" role="tab" data-toggle="tab" aria-expanded="true">
+            <strong>Personal Account</strong>
+            <span>I'm looking for a job</span>
+          </a>
+        </li>
+
+        <li role="presentation" class="">
+          <a [href]="employer_register" aria-controls="company" role="tab" data-toggle="tab" aria-expanded="false">
+            <strong>Company Account</strong>
+            <span>We are hiring employees</span>
+          </a>
+        </li>
+      </ul>
+
+      <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="personal">
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="form-register-username">Username</label>
+                <input type="text" class="form-control" id="form-register-username" name="username"
+                       [(ngModel)]="model.user.username">
+              </div><!-- /.form-group -->
+
+              <div class="form-group">
+                <label for="form-register-email">E-mail</label>
+                <input type="email" class="form-control" id="form-register-email" name="email"
+                       [(ngModel)]="model.email">
+              </div><!-- /.form-group -->
+
+              <div class="form-group">
+                <label for="form-register-password">Password</label>
+                <input type="password" class="form-control" id="form-register-password" name="password"
+                       [(ngModel)]="model.user.password">
+              </div><!-- /.form-group -->
+
+              <div class="form-group">
+                <label for="form-register-retype">Retype</label>
+                <input type="password" class="form-control" id="form-register-retype" name="password_confirm"
+                       [(ngModel)]="model.user.password_confirm">
+              </div><!-- /.form-group -->
+            </div><!-- /.col-* -->
+
+            <div class="col-sm-6">
+              <div class="row">
+                <div class="form-group col-sm-6">
+                  <label for="form-register-first-name">First Name</label>
+                  <input type="text" class="form-control" id="form-register-first-name" name="first_name"
+                         [(ngModel)]="model.first_name">
+                </div><!-- /.form-group -->
+
+                <div class="form-group col-sm-6">
+                  <label for="form-register-surname">Surname</label>
+                  <input type="text" class="form-control" id="form-register-surname" name="last_name"
+                         [(ngModel)]="model.last_name">
+                </div><!-- /.form-group -->
+              </div><!-- /.row -->
+
+              <div class="form-group">
+                <label form="form-register-photo">Photo</label>
+                <div class="file-input file-input-ajax-new">
+                  <div class="file-preview">
+                    <div class="close fileinput-remove">×</div>
+                    <div class=" file-drop-zone">
+                      <div *ngIf="model?.avatar_path?.length <= 2" class="file-drop-zone-title"><i class="fa fa-photo"></i><span>Upload Photo</span></div>
+                      <div class="file-preview-thumbnails">
+                        <div *ngIf="model?.avatar_path?.length > 2" class="file-preview-frame">
+                          <img [src]="model?.avatar_path" style="height: 170px">
+                        </div>
+                      </div>
+                      <div class="clearfix"></div>
+                      <div class="file-preview-status text-center text-success"></div>
+                      <div class="kv-fileinput-error file-error-message" style="display: none;"></div>
+                    </div>
+                  </div>
+                  <div class="kv-upload-progress hide">
+                    <div class="progress">
+                      <div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0%;">
+                        0%
+                      </div>
+                    </div>
+                  </div>
+                  <div class="input-group ">
+                    <div tabindex="500" class="form-control file-caption kv-fileinput-caption">
+                      <div class="file-caption-name">{{model?.avatar}}</div>
+                    </div>
+
+                    <div class="input-group-btn">
+                      <button type="button" tabindex="500" title="Clear selected files" class="btn btn-default fileinput-remove fileinput-remove-button">Remove</button>
+                      <button type="button" tabindex="500" title="Abort ongoing upload" class="btn btn-default hide fileinput-cancel fileinput-cancel-button">
+                        <i class="glyphicon glyphicon-ban-circle"></i> Cancel
+                      </button>
+                      <div tabindex="500" class="btn btn-primary btn-file">
+                        Browse
+                        <input type="file" name="file" id="form-register-photo" (change)="uploadAvatar($event)">
+                      </div>
+                    </div>
+                  </div></div>
+              </div><!-- /.form-group-->
+            </div><!-- /.col-* -->
+          </div><!-- /.row -->
+
+          <div class="center">
+            <div class="checkbox checkbox-info">
+              <label><div class="ez-checkbox"><input type="checkbox" class="ez-hide"></div> By signing up, you agree with the <a href="#">terms and conditions</a></label>
+            </div><!-- /.checkbox -->
+            <button type="button" class="btn btn-secondary" (click)="signUp()">Create an Account</button>
+          </div><!-- /.center -->
+        </div><!-- /.tab-pane -->
+
+        <div role="tabpanel" class="tab-pane" id="company">
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="form-register-company-username">Username</label>
+                <input type="text" class="form-control" id="form-register-company-username">
+              </div><!-- /.form-group -->
+
+              <div class="form-group">
+                <label for="form-register-company-email">E-mail</label>
+                <input type="email" class="form-control" id="form-register-company-email">
+              </div><!-- /.form-group -->
+
+              <div class="form-group">
+                <label for="form-register-company-password">Password</label>
+                <input type="password" class="form-control" id="form-register-company-password">
+              </div><!-- /.form-group -->
+
+              <div class="form-group">
+                <label for="form-register-company-retype">Retype</label>
+                <input type="password" class="form-control" id="form-register-company-retype">
+              </div><!-- /.form-group -->
+            </div><!-- /.col-* -->
+
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="form-register-company-name">Company Name</label>
+                <input type="text" class="form-control" id="form-register-company-name">
+              </div><!-- /.form-group -->
+
+              <div class="form-group">
+                <label for="form-register-company-vat">VAT No.</label>
+                <input type="text" class="form-control" id="form-register-company-vat">
+              </div><!-- /.form-group -->
+
+              <div class="form-group">
+                <label for="form-register-company-website">Website</label>
+                <input type="text" class="form-control" id="form-register-company-website">
+              </div><!-- /.form-group -->
+
+              <div class="form-group">
+                <label for="form-register-company-address-line">Address Line</label>
+                <input type="text" class="form-control" id="form-register-company-address-line">
+              </div><!-- /.form-group -->
+            </div><!-- /.col-* -->
+          </div><!-- /.row -->
+
+          <div class="center">
+            <div class="checkbox checkbox-info">
+              <label><div class="ez-checkbox"><input type="checkbox" class="ez-hide"></div> By signing up, you agree with the <a href="#">terms and conditions</a></label>
+            </div><!-- /.checkbox -->
+
+            <button type="submit" class="btn btn-secondary">Create an Account</button>
+          </div><!-- /.center -->
+        </div><!-- /.tab-pane -->
+      </div><!-- /.tab-content -->
+    </div><!-- /.col-* -->
+  </div><!-- /.row -->
+</div>
+
+<loading></loading>

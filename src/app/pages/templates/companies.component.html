@@ -1,0 +1,74 @@
+<div class="document-title">
+  <div class="container">
+    <h1>Companies</h1>
+  </div><!-- /.container -->
+</div><!-- /.document-title -->
+
+<div class="document-breadcrumb">
+  <div class="container">
+    <ul class="breadcrumb">
+      <li><a [routerLink]="['']">Home</a></li>
+      <li><a [routerLink]="['/companies']">Companies</a></li>
+    </ul>
+  </div><!-- /.container -->
+</div><!-- /.document-title -->
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-9">
+      <h2 class="page-header">Displaying <strong>21</strong> companies matching your query</h2>
+
+      <div class="companies-list">
+        <div *ngFor="let item of model" class="companies-list-item">
+          <div class="companies-list-item-image">
+            <a [routerLink]="['/company-detail/' + item.id]">
+              <caroimage [uri]="item?.logo" [alt]="'assets/img/tmp/dropbox.png'"></caroimage>
+            </a>
+          </div><!-- /.companies-list-item-image -->
+
+          <div class="companies-list-item-heading">
+            <h2><a [routerLink]="['/company-detail/' + item.id]">{{item.name}}</a></h2>
+            <h3>{{item.address1}}, {{item.address2}}, {{item.city}}</h3>
+          </div><!-- /.companies-list-item-heading -->
+
+          <div class="companies-list-item-count">
+            <a [routerLink]="['/company-detail/' + item.id]">{{item.job_count}} open positions</a>
+          </div><!-- /.positions-list-item-count -->
+
+          <div class="companies-list-item-rating">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <span class="companies-list-item-rating-count">/ 53</span>
+          </div><!-- /.companies-list-item-rating -->
+        </div><!-- /.companies-list-item -->
+      </div><!-- /.companies-list -->
+
+      <div class="center">
+        <pagination [(ngModel)]="currentPage"
+                    [totalItems]="model.count"
+                    [itemsPerPage]="20"
+                    (pageChanged)="pageChanged($event)"
+                    previousText="&lsaquo;" nextText="&rsaquo;"
+                    firstText="&laquo;" lastText="&raquo;"></pagination>
+      </div><!-- /.center -->
+    </div><!-- /.col-* -->
+
+    <div class="sidebar col-sm-3">
+      <h2>Open Positions</h2>
+
+      <div class="positions-list-small">
+        <div *ngFor="let item of newJobs" class="positions-list-small-item">
+          <h2><a href="#">{{item.name}}</a></h2>
+          <h3>
+            <span><img src="assets/img/tmp/dropbox.png" alt=""></span>
+            {{item.company.name}}. <br>{{item.location.address1}}, {{item.location.address2}}, {{item.location.city}}
+          </h3>
+        </div>
+      </div><!-- /.positions-list-small -->
+    </div><!-- /.col-* -->
+  </div><!-- /.row -->
+
+</div><!-- /.container -->

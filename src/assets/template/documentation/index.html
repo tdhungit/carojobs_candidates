@@ -1,0 +1,310 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="#">
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css" media="screen, projection"/>
+    <link rel="stylesheet" type="text/css" href="assets/css/documentation.css" media="screen, projection"/>
+    <link href="http://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700,800" rel="stylesheet" type="text/css">
+    <title>Documentation</title>
+</head>
+<body>
+
+<div class="page">
+    <div class="sidebar">
+        <h2>Table of Contents</h2>
+
+        <ul class="nav nav-pills nav-stacked"></ul>
+    </div>
+
+    <div class="main">
+        <div class="container-fluid">
+            <div class="page-header">
+                <h2>Profession - Job Template</h2>
+            </div>
+
+            <div class="wrapper">
+                <h1 id="overview">Overview</h1>
+
+                <div class="row">
+                    <div class="col-sm-6">
+                        <p>
+                            <strong>Folder structure for assets/ directory</strong>
+                        </p>
+
+                        <ul class="list-group">
+                            <li class="list-group-item"><strong>css</strong> - contains css files which were generated from scss files</li>
+                            <li class="list-group-item"><strong>scss</strong> - contains scss files</li>
+                            <li class="list-group-item"><strong>img</strong> - contains site images</li>
+                            <li class="list-group-item"><strong>js</strong> - contains site javascripts</li>
+                            <li class="list-group-item"><strong>fonts</strong> - contains fonts used on the site</li>
+                            <li class="list-group-item"><strong>libraries</strong> - contains third party libraries used in the theme</li>
+                        </ul>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <p>
+                            <strong>Documentation links</strong>
+                        </p>
+
+                        <ul class="list-group">
+                            <a href="http://getbootstrap.com/" class="list-group-item">Bootstrap</a>
+                            <a href="http://sass-lang.com/" class="list-group-item">SASS</a>
+                            <a href="http://jquery.com/" class="list-group-item">jQuery</a>
+                            <a href="http://fortawesome.github.io/Font-Awesome/icons/" class="list-group-item">Font Awesome Icons</a>
+                            <a href="http://fortawesome.github.io/Font-Awesome/examples/" class="list-group-item">Font Awesome Examples</a>
+                        </ul>
+                    </div>
+                </div>
+            </div><!-- /.wrapper -->
+
+            <div class="wrapper">
+                <h1 id="looking">Looking for right SCSS</h1>
+
+                <p>
+                    Template is split into large amount of small helper files. Sometimes is hard to know which file to open. Here are saveral ways how to find correct file.
+                </p>
+
+                <div class="well">
+                    <h2 id="looking-grep">Using browser</h2>
+
+                    <p>
+                        Template has source maps support. If you don't know what the source maps are read more at http://thesassway.com/intermediate/using-source-maps-with-sass
+                    </p>
+
+                    <p>
+                        We are using Chrome for development but next example should work similar in different browser.
+                    </p>
+
+                    <p>
+                        Firstly open your website in browse and make right click on element which you want to modify and select inspect element.
+                    </p>
+
+                    <br><br>
+
+                    <img src="assets/img/inspect.png" alt="">
+
+                    <br><br><br><br>
+
+                    <p>After that console will display at the bottom of browser. At the right side you can which styles are applied on inspected element and you can see which file contains that properties.</p>
+
+                    <img src="assets/img/inspect2.png" alt="">
+                </div>
+
+                <div class="well">
+                    <h2 id="looking-grep">Using grep</h2>
+
+                    <p>
+                        If you are on Mac or Linux, I recommed to using grep (terminal) to find what you are looking for. For example we are looking file which is containg .navigation class we can use command below.
+                    </p>
+
+                    <img src="assets/img/grep.png" alt="">
+                </div>
+
+            </div><!-- /.wrapper -->
+
+            <div class="wrapper">
+                <h1 id="custom-colors">Custom Colors</h1>
+
+                <p>
+                    You can see color definitions in <strong>assets/scss/_variables.scss</strong>. Feel free to change the colors as needed. After editing the colors you need to compile the sass files. In template there is a bundled automation script so you can compile files easily, just check example below.
+
+<code><pre>$ cd project
+$ npm install gulp gulp-sass
+$ gulp compile
+</pre></code>
+                </p>
+
+                <img src="assets/img/colors.png" alt="">
+            </div><!-- /.wrapper -->
+
+            <div class="wrapper">
+                <h1 id="bootstrap">Bootstrap</h1>
+
+                <div class="alert alert-info">
+                    <p>
+                        Profession template uses Bootstrap library heavily. Please consider
+                        the bootstrap 3.x documentation as extended documentation to <strong>Profession</strong> template, as most of the
+                        answers can be found there.
+                    </p><br>
+
+                    <a class="btn btn-primary" href="http://getbootstrap.com/">Read documentation</a>
+                </div>
+
+                <div class="alert alert-warning">
+                    <p>Please pay increased attention to following sections of Bootstrap documentation:</p><br>
+
+                    <div class="btn-group">
+                        <a class="btn btn-warning" href="http://getbootstrap.com/css/#grid">Grid</a>
+                        <a class="btn btn-warning" href="http://getbootstrap.com/css/#buttons">Buttons</a>
+                        <a class="btn btn-warning" href="http://getbootstrap.com/css/#forms">Forms</a>
+                        <a class="btn btn-warning" href="http://getbootstrap.com/components/#input-groups">Input Groups</a>
+                        <a class="btn btn-warning" href="http://getbootstrap.com/components/#nav">Navigation</a>
+                        <a class="btn btn-warning" href="http://getbootstrap.com/components/#navbar">Navbar</a>
+                        <a class="btn btn-warning" href="http://getbootstrap.com/javascript/#carousel">Carousel</a>
+                    </div>
+                </div>
+            </div><!-- /.wrapper -->
+
+            <div class="wrapper">
+                <h1 id="styling">Styling</h1>
+
+                <div class="alert alert-info">
+                    <p>
+                        For CSS files we are usign SASS. The CSS loaded in templates is preprocessed.
+                    </p>
+
+                    <br>
+
+                    <a class="btn btn-primary" href="http://sass-lang.com/install">SASS Installation Instructions</a>
+                </div>
+
+                <h3>SASS files structure</h3>
+
+                <ul>
+                    <li><strong>assets/scss/helpers/_action_bar.scss</strong> - Action Bar</li>
+                    <li><strong>assets/scss/helpers/_buttons.scss</strong> - Buttons</li>
+                    <li><strong>assets/scss/helpers/_canditates_list.scss</strong> - Canditates List</li>
+                    <li><strong>assets/scss/helpers/_commons.scss</strong> - Commons </li>
+                    <li><strong>assets/scss/helpers/_companies_list.scss</strong> - Companies List</li>
+                    <li><strong>assets/scss/helpers/_company.scss</strong> - Company</li>
+                    <li><strong>assets/scss/helpers/_cta.scss</strong> - Call to action</li>
+                    <li><strong>assets/scss/helpers/_elements.scss</strong> - Basic Elements</li>
+                    <li><strong>assets/scss/helpers/_filters.scss</strong> - Filters</li>
+                    <li><strong>assets/scss/helpers/_footer.scss</strong> - Footer </li>
+                    <li><strong>assets/scss/helpers/_forms.scss</strong> - Forms</li>
+                    <li><strong>assets/scss/helpers/_header.scss</strong> - Header</li>
+                    <li><strong>assets/scss/helpers/_hero_content.scss</strong> - Hero Content</li>
+                    <li><strong>assets/scss/helpers/_navigation.scss</strong> - Navigation</li>
+                    <li><strong>assets/scss/helpers/_newsletter.scss</strong> - Newsletter</li>
+                    <li><strong>assets/scss/helpers/_pagination .scss</strong> - Pagination</li>
+                    <li><strong>assets/scss/helpers/_panels.scss</strong> - Panels</li>
+                    <li><strong>assets/scss/helpers/_partners.scss</strong> - Partners</li>
+                    <li><strong>assets/scss/helpers/_position.scss</strong> - Position</li>
+                    <li><strong>assets/scss/helpers/_positions_list.scss</strong> - Positions List</li>
+                    <li><strong>assets/scss/helpers/_positions_list_small.scss</strong> - Positions List Small</li>
+                    <li><strong>assets/scss/helpers/_post.scss</strong> - Post</li>
+                    <li><strong>assets/scss/helpers/_pricing.scss</strong> - Pricing</li>
+                    <li><strong>assets/scss/helpers/_resume.scss</strong> - Resume</li>
+                    <li><strong>assets/scss/helpers/_stats.scss</strong> - Stats</li>
+                    <li><strong>assets/scss/helpers/_tabs.scss</strong> - Tabs</li>
+                    <li><strong>assets/scss/helpers/_variables.scss</strong> - Variables</li>
+                    <li><strong>assets/scss/helpers/_widgets.scss</strong> - Widgets</li>                                        
+                </ul>
+            </div>
+
+            <div class="wrapper">
+                <h1 id="javascript">JavaScript</h1>
+
+                <div class="alert alert-info">
+                    The main javascript file is stored in <i><strong>assets/js/siperlist.js</strong></i>
+                </div>
+
+                <div class="alert alert-info">
+                    Each javascript functionality has its own block with heading in <i><strong>assets/js/Profession.js</strong></i>. If you don't want to use something feel free to remove desired block.
+                </div>
+
+                <div class="alert alert-warning">
+                    Always add new javascript files before the closing &lt;/body&gt; tag.
+                </div>
+
+                <div class="alert alert-warning">
+                    Use jQuery scrict mode.<br>
+                    <br>
+                    <code>
+                        $(document).ready(function() {<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;'use strict';<br>
+                        });<br>
+                    </code>
+                </div>
+<p><strong>File Input</strong></p>
+
+<pre><code>$("#form-register-photo").fileinput({
+	dropZoneTitle: '<i class="fa fa-photo"></i><span>Upload Photo</span>',
+	uploadUrl: '/',
+	maxFileCount: 1,
+	showUpload: false,
+	browseLabel: 'Browse',
+	browseIcon: '',
+	removeLabel: 'Remove',
+	removeIcon: '',
+	uploadLabel: 'Upload',
+	uploadIcon: ''
+});</code></pre>
+
+<p><strong>Bootstrap Select</strong></p>
+
+<pre><code>	$('select').selectpicker({
+	style: 'btn',
+	template: {
+  		caret: '<i class="fa fa-chevron-down"></i>'
+	},
+});</code></pre>
+
+<p><strong>ezMark</strong></p>
+
+<pre><code>$('input[type=radio], input[type=checkbox]').ezMark();</code></pre>
+
+<p><strong>Action Bar</strong></p>
+<pre><code>// Switch the body classes
+$('.action-bar-chapter a').on('click', function(e) {
+    e.preventDefault();
+
+    $(this).closest('ul').find('a').removeClass('active');
+    $(this).closest('ul').find('a').each(function() {
+        $('body').removeClass($(this).attr('rel'));
+    });
+    $('body').addClass($(this).attr('rel'));
+    $(this).addClass('active');
+});
+
+// Change color combination
+$('.action-bar-chapter table a').on('click', function(e) {
+    e.preventDefault();
+    $(this).closest('table').find('a').removeClass('active');
+    $(this).addClass('active');
+
+    var uri = $(this).attr('href');
+    $('#style-primary').attr('href', uri);
+});
+
+// Hide/Show
+$('.action-bar-title').on('click', function(e) {
+    $('.action-bar-content').toggleClass('open');
+});</code></pre>
+            </div>
+
+            <div class="wrapper">
+                <h1 id="libraries">Libraries</h1>
+
+                <div class="list-group">
+
+                    <li class="list-group-item">
+                        <a href="http://plugins.krajee.com/file-input"><strong>Bootstrap File Input</strong></a> - An enhanced HTML 5 file input for Bootstrap 3.x
+                    </li>
+
+                    <li class="list-group-item">
+                        <a href="http://silviomoreto.github.io/bootstrap-select/"><strong>Bootstrap Select</strong></a> - A custom select for Bootstrap using button dropdown.
+                    </li>
+
+                    <li class="list-group-item">
+                        <a href="http://fontawesome.io/"><strong>Font Awesome</strong></a> - icon-graphic font used for site icons
+                    </li>
+
+
+                    <li class="list-group-item">
+                        <a href="http://owlgraphic.com/owlcarousel/"><strong>OWL Carousel</strong></a> - Touch enabled jQuery plugin that lets you create beautiful responsive carousel slider.
+                    </li>
+                </div>
+            </div>
+        </div>
+    </div><!-- /.main -->
+<div><!-- /.page -->
+
+<script type="text/javascript" src="assets/js/jquery.js"></script>
+<script type="text/javascript" src="assets/js/documentation.js"></script>
+</body>
+</html>

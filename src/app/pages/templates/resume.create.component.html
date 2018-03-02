@@ -1,0 +1,300 @@
+<div class="document-title">
+  <div class="container">
+    <h1 class="center">Create Resume</h1>
+  </div><!-- /.container -->
+</div><!-- /.document-title -->
+
+<div class="container">
+  <alert></alert>
+  <div class="col-sm-9">
+    <form method="get" action="?">
+      <div class="row">
+        <div class="col-sm-7">
+          <div class="form-group">
+            <label form="form-register-photo">Photo</label>
+            <div class="file-input file-input-ajax-new">
+              <div class="file-preview">
+                <div class="close fileinput-remove">×</div>
+                <div class=" file-drop-zone">
+                  <div *ngIf="model?.avatar_path?.length <= 2" class="file-drop-zone-title"><i class="fa fa-photo"></i><span>Upload Photo</span></div>
+                  <div class="file-preview-thumbnails">
+                    <div *ngIf="model?.avatar_path?.length > 2" class="file-preview-frame">
+                      <img [src]="model?.avatar_path" style="height: 170px">
+                    </div>
+                  </div>
+                  <div class="clearfix"></div>
+                  <div class="file-preview-status text-center text-success"></div>
+                  <div class="kv-fileinput-error file-error-message" style="display: none;"></div>
+                </div>
+              </div>
+              <div class="kv-upload-progress hide">
+                <div class="progress">
+                  <div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0%;">
+                    0%
+                  </div>
+                </div>
+              </div>
+              <div class="input-group ">
+                <div tabindex="500" class="form-control file-caption kv-fileinput-caption">
+                  <div class="file-caption-name">{{model?.avatar}}</div>
+                </div>
+
+                <div class="input-group-btn">
+                  <button type="button" tabindex="500" title="Clear selected files" class="btn btn-default fileinput-remove fileinput-remove-button">Remove</button>
+                  <button type="button" tabindex="500" title="Abort ongoing upload" class="btn btn-default hide fileinput-cancel fileinput-cancel-button">
+                    <i class="glyphicon glyphicon-ban-circle"></i> Cancel
+                  </button>
+                  <div tabindex="500" class="btn btn-primary btn-file">
+                    Browse
+                    <input type="file" name="file" id="form-register-photo" (change)="uploadAvatar($event)">
+                  </div>
+                </div>
+              </div></div>
+          </div><!-- /.form-group-->
+        </div><!-- /.col-* -->
+
+        <div class="col-sm-5">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" class="form-control" name="first_name" [(ngModel)]="model.first_name">
+          </div><!-- /.form-group -->
+
+          <div class="form-group">
+            <label>Middle Name</label>
+            <input type="text" class="form-control" name="middle_name" [(ngModel)]="model.middle_name">
+          </div><!-- /.form-group -->
+
+          <div class="form-group">
+            <label>Surname</label>
+            <input type="text" class="form-control" name="last_name" [(ngModel)]="model.last_name">
+          </div><!-- /.form-group -->
+        </div><!-- /.col-* -->
+        <div class="col-sm-12">
+          <div class="form-group">
+            <label>Job Title</label>
+            <input type="text" class="form-control" name="name" [(ngModel)]="model.name">
+          </div><!-- /.form-group -->
+        </div>
+      </div><!-- /.row -->
+
+      <h3 class="page-header">Contact Information</h3>
+
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label>Country</label>
+            <input type="text" class="form-control" name="country" [(ngModel)]="model.country">
+          </div><!-- /.form-group -->
+        </div><!-- /.col-* -->
+
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label>City</label>
+            <input type="text" class="form-control" name="city" [(ngModel)]="model.city">
+          </div><!-- /.form-group -->
+        </div><!-- /.col-* -->
+
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label>Address</label>
+            <input type="text" class="form-control" name="address" [(ngModel)]="model.address">
+          </div><!-- /.form-group -->
+        </div><!-- /.col-* -->
+
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label>Phone</label>
+            <input type="text" class="form-control" name="phone" [(ngModel)]="model.phone">
+          </div><!-- /.form-group -->
+        </div><!-- /.col-* -->
+
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label>E-mail</label>
+            <input type="text" class="form-control" name="email" [(ngModel)]="model.email">
+          </div><!-- /.form-group -->
+        </div><!-- /.col-* -->
+
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label>Website</label>
+            <input type="text" class="form-control" name="website" [(ngModel)]="model.website">
+          </div><!-- /.form-group -->
+        </div><!-- /.col-* -->
+      </div><!-- /.row -->
+
+      <h3 class="page-header">Biography</h3>
+
+      <div class="form-group">
+        <textarea id="editor" class="form-control" name="description" [(ngModel)]="model.description"></textarea>
+      </div><!-- /.form-group -->
+
+      <h3 class="page-header">Experience</h3>
+      <table class="table table-resume-create">
+        <tr *ngFor="let item of this.model.skill">
+          <td>{{item.category}}</td>
+          <td>{{item.name}}</td>
+          <td>{{item.experience}}</td>
+        </tr>
+      </table>
+      <div class="row">
+        <div class="col-sm-5">
+          <div class="form-group">
+            <label>Category</label>
+            <select class="form-control" name="skill_category" [(ngModel)]="skill.category">
+              <option value="Skill">Skill</option>
+              <option value="Operation System">Operation System</option>
+              <option value="Language">Language</option>
+            </select>
+          </div><!-- /.form-group -->
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label>Skill</label>
+            <input type="text" class="form-control" name="skill_name" [(ngModel)]="skill.name">
+          </div><!-- /.form-group -->
+        </div>
+        <div class="col-sm-3">
+          <div class="form-group">
+            <label>Experience</label>
+            <input type="number" class="form-control" name="skill_experience" [(ngModel)]="skill.experience">
+          </div><!-- /.form-group -->
+        </div>
+      </div>
+      <h3 class="page-header page-header-button"><button class="btn btn-primary" (click)="addSkill()">Add Another</button></h3>
+
+      <h3 class="page-header">Work History</h3>
+      <table class="table table-resume-create">
+        <tr *ngFor="let item of this.model.experience">
+          <td>{{item.date_start}} ~ {{item.date_end}}</td>
+          <td>{{item.name}}</td>
+          <td>{{item.description}}</td>
+        </tr>
+      </table>
+      <div class="row">
+        <div class="col-sm-5">
+          <div class="form-group">
+            <label>Job Title</label>
+            <input type="text" class="form-control" name="experience_name" [(ngModel)]="experience.name">
+          </div><!-- /.form-group -->
+
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label>Date From</label>
+                <input type="text" class="form-control" name="experience_date_start" [(ngModel)]="experience.date_start">
+              </div><!-- /.form-group -->
+            </div><!-- /.col-* -->
+
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label>Date To</label>
+                <input type="text" class="form-control" name="experience_date_end" [(ngModel)]="experience.date_end">
+              </div><!-- /.form-group -->
+            </div><!-- /.col-* -->
+          </div><!-- /.row -->
+        </div><!-- /.col-* -->
+
+        <div class="col-sm-7">
+          <div class="form-group">
+            <label>Short Description</label>
+            <textarea class="form-control" rows="5" name="experience_description" [(ngModel)]="experience.description"></textarea>
+          </div><!-- /.form-group -->
+        </div><!-- /.col-* -->
+      </div><!-- /.row -->
+      <h3 class="page-header page-header-button"><button class="btn btn-primary" (click)="addExperience()">Add Another</button></h3>
+
+      <h3 class="page-header">Education</h3>
+      <table class="table table-resume-create">
+        <tr *ngFor="let item of this.model.education">
+          <td>{{item.date_start}} ~ {{item.date_end}}</td>
+          <td>
+            <span>{{item.name}}</span>
+            <br>
+            <span>({{item.degree}})</span>
+          </td>
+          <td>{{item.description}}</td>
+        </tr>
+      </table>
+      <div class="row">
+        <div class="col-sm-5">
+          <div class="form-group">
+            <label>School Name</label>
+            <input type="text" class="form-control" name="education_name" [(ngModel)]="education.name">
+          </div><!-- /.form-group -->
+
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label>Date From</label>
+                <input type="text" class="form-control" name="education_date_start" [(ngModel)]="education.date_start">
+              </div><!-- /.form-group -->
+            </div><!-- /.col-* -->
+
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label>Date To</label>
+                <input type="text" class="form-control" name="education_date_end" [(ngModel)]="education.date_end">
+              </div><!-- /.form-group -->
+            </div><!-- /.col-* -->
+          </div><!-- /.row -->
+        </div><!-- /.col-* -->
+
+        <div class="col-sm-7">
+          <div class="form-group">
+            <label>Short Description</label>
+            <textarea class="form-control" rows="5" name="education_description" [(ngModel)]="education.description"></textarea>
+          </div><!-- /.form-group -->
+        </div><!-- /.col-* -->
+
+        <div class="col-sm-12">
+          <div class="form-group">
+            <label>Degree</label>
+            <input type="text" class="form-control" name="education_degree" [(ngModel)]="education.degree">
+          </div><!-- /.form-group -->
+        </div>
+      </div><!-- /.row -->
+      <h3 class="page-header page-header-button"><button class="btn btn-primary" (click)="addEducation()">Add Another</button></h3>
+
+      <hr>
+
+      <div class="center">
+        <button type="button" class="btn btn-secondary btn-lg" (click)="create()">Save Resume</button>
+      </div><!-- /.center -->
+    </form>
+  </div><!-- /.col-* -->
+
+  <div class="col-sm-3">
+    <div class="widget">
+      <p>
+        <a href="login.html" class="btn btn-block btn-secondary">Sign In</a>
+      </p>
+
+      <p>
+        <a href="#" class="btn btn-block btn-linkedin">LinkedIn Import</a>
+      </p>
+
+      <p>
+        <a href="#" class="btn btn-block btn-default">Quick Preview</a>
+      </p>
+    </div><!-- /.widget -->
+
+    <div class="widget">
+      <h2>Navigation</h2>
+
+      <ul class="nav">
+        <li><a href="#"><span>1.</span> Basic Information</a></li>
+        <li><a href="#"><span>2.</span> Contact</a></li>
+        <li><a href="#"><span>3.</span> Biography</a></li>
+        <li><a href="#"><span>4.</span> Experience</a></li>
+        <li><a href="#"><span>5.</span> Education </a></li>
+      </ul>
+    </div><!-- /.widget -->
+
+    <div class="widget">
+      <h2>Do you have an account?</h2>
+
+      <p>If you don't have an account and you are looking for new employees. Feel free to <a href="registration.html">create new registration</a> for companies with transparent pricing.</p>
+    </div><!-- /.widget -->
+  </div><!-- /.col-* -->
+</div>

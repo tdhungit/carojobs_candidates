@@ -1,0 +1,23 @@
+.page-header-button {
+  margin: 5px 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  height: 22px;
+}
+
+.table-resume-create {
+  margin-top: -21px !important;
+}
+
+.resume-main-image img {
+  width: 100%;
+}
+
+.post-box-image img {
+  max-width: 436px;
+  max-height: 224px;
+}
+
+.post-box-small .post-box-image img {
+  max-height: 90px;
+}

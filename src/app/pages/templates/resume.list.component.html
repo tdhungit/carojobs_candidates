@@ -1,0 +1,59 @@
+<div class="document-title">
+  <div class="container">
+    <h1>My Resumes</h1>
+  </div><!-- /.container -->
+</div><!-- /.document-title -->
+
+<div class="document-breadcrumb">
+  <div class="container">
+    <ul class="breadcrumb">
+      <li><a [routerLink]="['/']">Home</a></li>
+      <li><a [routerLink]="['/resumes']">Resumes</a></li>
+    </ul>
+  </div><!-- /.container -->
+</div><!-- /.document-title -->
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <h2 class="page-header"><strong>215</strong> candidates matching your query</h2>
+
+      <div *ngFor="let item of model.results" class="candidates-list">
+        <div class="candidates-list-item">
+          <div class="candidates-list-item-heading">
+            <div class="candidates-list-item-image">
+              <a [routerLink]="['/resume-detail/' + item.id]">
+                <caroimage [uri]="item.avatar" [alt]="'assets/img/tmp/resume.jpg'"></caroimage>
+              </a>
+              <a [routerLink]="['/resume-detail/' + item.id]" class="candidates-list-item-image-label">
+                <img src="assets/img/tmp/instagram.png" alt="{{item.name}}">
+              </a>
+            </div><!-- /.candidates-list-item-image -->
+            <div class="candidates-list-item-title">
+              <h2><a [routerLink]="['/resume-detail/' + item.id]">{{item.first_name}} {{item.middle_name}} {{item.last_name}}</a></h2>
+              <h3>{{item.name}}</h3>
+            </div><!-- /.candidates-list-item-title -->
+          </div><!-- /.candidates-list-item-heading -->
+
+          <div class="candidates-list-item-location">
+            <i class="fa fa-map-marker"></i> {{item.address}}, {{item.city}}, {{item.country}}
+          </div><!-- /.candidates-list-item-location -->
+
+          <div class="candidates-list-item-profile">
+            <span class="candidates-list-item-profile-count">92% completed</span>
+            <span class="candidates-list-item-profile-bar"><span style="width: 92%"></span></span>
+          </div><!-- /.candidates-list-item-rating -->
+        </div><!-- /.candidates-list-item -->
+      </div><!-- /.candidates-list -->
+
+      <div class="center">
+        <pagination [(ngModel)]="currentPage"
+                    [totalItems]="model.count"
+                    [itemsPerPage]="20"
+                    (pageChanged)="pageChanged($event)"
+                    previousText="&lsaquo;" nextText="&rsaquo;"
+                    firstText="&laquo;" lastText="&raquo;"></pagination>
+      </div><!-- /.center -->
+    </div><!-- /.col-* -->
+  </div><!-- /.row -->
+</div><!-- /.container -->

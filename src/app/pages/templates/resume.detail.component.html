@@ -1,0 +1,171 @@
+<div class="document-title">
+  <div class="container">
+    <h1>Resume: {{model.name}}</h1>
+  </div><!-- /.container -->
+</div><!-- /.document-title -->
+
+<div class="document-breadcrumb">
+  <div class="container">
+    <ul class="breadcrumb">
+      <li><a [routerLink]="['/']">Home</a></li>
+      <li><a [routerLink]="['/resumes']">Resumes</a></li>
+      <li><a [routerLink]="['/resume-detail/' + resume_id]">{{model.name}}</a></li>
+    </ul>
+  </div><!-- /.container -->
+</div><!-- /.document-title -->
+
+<div class="container">
+  <div class="resume">
+    <div class="resume-main">
+      <div class="resume-main-image">
+        <caroimage [uri]="model.avatar" [alt]="'assets/img/tmp/resume.jpg'"></caroimage>
+
+        <a href="#" class="resume-main-image-label">
+          <img src="assets/img/tmp/instagram.png" alt="">
+        </a>
+      </div><!-- /.resume-main-image -->
+
+      <div class="resume-main-content">
+        <h2>{{model.first_name}} {{model.middle_name}} {{model.last_name}}
+          <span class="resume-main-verified"><i class="fa fa-check"></i></span>
+
+          <span class="resume-main-rating">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <span class="resume-main-rating-count">/ 32</span>
+                </span><!-- /.resume-main-rating -->
+        </h2>
+
+        <h3>{{model.name}}</h3>
+
+        <p class="resume-main-contacts">
+          {{model.address}}, {{model.city}}, {{model.country}}<br>
+          Email: <a href="mailto:hello@example.com">{{model.email}}</a> - Website: <a href="http://example.com">{{model.website}}</a>
+        </p><!-- /.resume-main-contact -->
+
+        <div class="resume-main-actions">
+          <a href="#" class="btn btn-secondary"><i class="fa fa-download"></i> Download</a>
+          <a href="#" class="btn btn-default">Contact</a>
+          <a [routerLink]="['/resume-edit/' + resume_id]" class="btn btn-default">Edit</a>
+        </div><!-- /.resume-main-actions -->
+      </div><!-- /.resume-main-content -->
+    </div><!-- /.resume-main -->
+
+    <div class="resume-chapter">
+      <div class="resume-chapter-inner">
+        <div class="resume-chapter-content">
+          <div class="row">
+            <div class="col-sm-3">
+              <span class="resume-chapter-social">
+                  <span class="resume-chapter-social-icon"><i class="fa fa-facebook-square"></i></span>
+                  <span class="resume-chapter-social-value">5 699 likes</span>
+              </span><!-- /.resume-chapter-social -->
+            </div><!-- /.col-* -->
+
+            <div class="col-sm-3">
+              <span class="resume-chapter-social">
+                  <span class="resume-chapter-social-icon"><i class="fa fa-twitter-square"></i></span>
+                  <span class="resume-chapter-social-value">800 tweets </span>
+              </span><!-- /.resume-chapter-social -->
+            </div><!-- /.col-* -->
+
+            <div class="col-sm-3">
+              <span class="resume-chapter-social">
+                  <span class="resume-chapter-social-icon"><i class="fa fa-linkedin-square"></i></span>
+                  <span class="resume-chapter-social-value">@elliot </span>
+              </span><!-- /.resume-chapter-social -->
+            </div><!-- /.col-* -->
+
+            <div class="col-sm-3">
+              <span class="resume-chapter-social">
+                  <span class="resume-chapter-social-icon"><i class="fa fa-youtube-square"></i></span>
+                  <span class="resume-chapter-social-value">@elliot</span>
+              </span><!-- /.resume-chapter-social -->
+            </div><!-- /.col-* -->
+          </div><!-- /.row -->
+        </div><!-- /.recume-chapter-content -->
+      </div><!-- /.resume-chapter-inner -->
+    </div><!-- /.resume-chapter -->
+
+    <div class="resume-chapter">
+      <div class="resume-chapter-inner">
+        <div class="resume-chapter-title">
+          <h2>Summary</h2>
+        </div><!-- /.resume-chapter-title -->
+
+        <div class="resume-chapter-content">
+          {{model.description}}
+        </div><!-- /.resume-chapter-content -->
+      </div><!-- /.resume-chapter-inner -->
+    </div><!-- /.resume-chapter -->
+
+    <div class="resume-chapter">
+      <div class="resume-chapter-inner">
+        <div class="resume-chapter-content">
+          <h2 class="mb40">Working History</h2>
+
+          <dl>
+            <div *ngFor="let item of model.experience_set" style="padding-bottom: 48px">
+              <dt>{{item.date_start|date:'MM/yyyy'}} ~ {{item.date_end|date:'MM/yyyy'}}</dt>
+
+              <dd>
+                <h3>{{item.name}}</h3>
+
+                <p>{{item.description}}</p>
+              </dd>
+            </div>
+            <div *ngFor="let item of model.education_set" style="padding-bottom: 48px">
+              <dt>{{item.date_start|date:'MM/yyyy'}} ~ {{item.date_end|date:'MM/yyyy'}}</dt>
+
+              <dd>
+                <h3>{{item.name}} - {{item.degree}}</h3>
+
+                <p>{{item.description}}</p>
+              </dd>
+            </div>
+          </dl>
+        </div><!-- /.resume-chapter-content -->
+      </div><!-- /.resume-chapter-inner -->
+    </div><!-- /.resume-chapter -->
+
+    <div class="resume-chapter">
+      <div class="resume-chapter-inner">
+        <div class="resume-chapter-title">
+          <h2>Experience</h2>
+        </div><!-- /.resume-chapter-title -->
+
+        <div class="resume-chapter-content">
+          <div class="row">
+            <div class="col-sm-4">
+              <h4>Skills</h4>
+
+              <ul>
+                <li *ngFor="let item of skill_skills">{{item.name}}, <span>{{item.experience}} years</span></li>
+              </ul>
+            </div><!-- /.col-* -->
+
+            <div class="col-sm-4">
+              <h4>Operating Systems</h4>
+
+              <ul>
+                <li *ngFor="let item of skill_os">{{item.name}}, <span>{{item.experience}} years</span></li>
+              </ul>
+            </div><!-- /.col-* -->
+
+            <div class="col-sm-4">
+              <h4>Languages</h4>
+
+              <ul>
+                <li *ngFor="let item of skill_lang">{{item.name}}, <span>{{item.experience}} years</span></li>
+              </ul>
+            </div><!-- /.col-* -->
+          </div><!-- /.row -->
+        </div><!-- /.resume-chapter-content -->
+      </div><!-- /.resume-chapter-inner -->
+    </div><!-- /.resume-chapter -->
+  </div><!-- /.resume -->
+
+</div><!-- /.container -->

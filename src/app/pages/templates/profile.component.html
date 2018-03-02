@@ -1,0 +1,74 @@
+<div class="document-title">
+  <div class="container">
+    <h1>My Profile</h1>
+  </div><!-- /.container -->
+</div><!-- /.document-title -->
+
+<div class="document-breadcrumb">
+  <div class="container">
+    <ul class="breadcrumb">
+      <li><a [routerLink]="['/']">Home</a></li>
+      <li><a [routerLink]="['/profile']">My Profile</a></li>
+    </ul>
+  </div><!-- /.container -->
+</div><!-- /.document-title -->
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8">
+      <div class="position-header">
+        <h1>
+          My Account
+          <span><a [routerLink]="['/profile-edit']">Edit</a></span>
+        </h1>
+        <h2>
+					<span class="position-header-company-image">
+						<a [routerLink]="['/profile']">
+							<caroimage [uri]="model.avatar" [alt]="'assets/img/tmp/dropbox.png'"></caroimage>
+						</a>
+					</span>
+
+          <a [routerLink]="['/profile']">{{model.first_name}} {{model.last_name}}</a>
+        </h2>
+      </div>
+
+      <div class="position-general-information">
+        <dl>
+          <dt>Username</dt>
+          <dd>{{model.user.username}}</dd>
+
+          <dt>First Name</dt>
+          <dd>{{model.first_name}}</dd>
+
+          <dt>Last Name</dt>
+          <dd>{{model.last_name}}</dd>
+
+          <dt>Email</dt>
+          <dd>{{model.email}}</dd>
+
+          <dt>Phone</dt>
+          <dd>{{model.phone ? model.phone : 'N/A'}} </dd>
+
+          <dt>Alternate Phone</dt>
+          <dd>{{model.alternate_phone ? model.alternate_phone : 'N/A'}} </dd>
+
+          <dt>Birthday</dt>
+          <dd>{{model.birthday ? model.birthday : 'N/A'}}</dd>
+
+          <dt>Address</dt>
+          <dd>{{model.address1}}, {{model.address2}}, {{model.state}}, {{model.city}},
+            {{model.post_code}}, {{model.country}} </dd>
+        </dl>
+      </div>
+    </div>
+
+    <div class="col-sm-4">
+      <ul>
+        <li><a [routerLink]="['/profile']">My Profile</a></li>
+        <li><a [routerLink]="['/profile-edit']">Change My Profile</a></li>
+        <li><a [routerLink]="['/resumes']">My Resumes</a></li>
+        <li><a [routerLink]="['/profile-jobs']">My Jobs</a></li>
+      </ul>
+    </div>
+  </div>
+</div>

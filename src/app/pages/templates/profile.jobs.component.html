@@ -1,0 +1,51 @@
+<div class="document-title">
+  <div class="container">
+    <h1>My Jobs</h1>
+  </div><!-- /.container -->
+</div><!-- /.document-title -->
+
+<div class="document-breadcrumb">
+  <div class="container">
+    <ul class="breadcrumb">
+      <li><a [routerLink]="['/']">Home</a></li>
+      <li><a [routerLink]="['/profile']">My Profile</a></li>
+      <li><a [routerLink]="['/profile-jobs']">My Jobs</a></li>
+    </ul>
+  </div><!-- /.container -->
+</div><!-- /.document-title -->
+
+<div class="container">
+  <h2 class="page-header"><strong>215</strong> Jobs</h2>
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="positions-list">
+        <div *ngFor="let item of model.results" class="positions-list-item">
+          <h2>
+            <a [routerLink]="['/job-detail/' + item.id]">{{item.name}}</a>
+            <span>Featured</span>
+          </h2>
+          <h3>
+            <span>
+              <caroimage [uri]="item.company.logo" [alt]="'assets/img/tmp/dropbox.png'"></caroimage>
+            </span>
+            {{item.location.address1}}, {{item.location.address2}}, {{item.location.city}} <br>
+          </h3>
+
+          <div class="position-list-item-date">{{item.created_date|date:'MM/dd/yyyy'}}</div><!-- /.position-list-item-date -->
+          <div class="position-list-item-action">
+            <span></span>
+          </div><!-- /.position-list-item-action -->
+        </div><!-- /.position-list-item -->
+      </div><!-- /.positions-list -->
+
+      <div class="center">
+        <pagination [(ngModel)]="currentPage"
+                    [totalItems]="model.count"
+                    [itemsPerPage]="20"
+                    (pageChanged)="pageChanged($event)"
+                    previousText="&lsaquo;" nextText="&rsaquo;"
+                    firstText="&laquo;" lastText="&raquo;"></pagination>
+      </div><!-- /.center -->
+    </div><!-- /.col-* -->
+  </div>
+</div>

@@ -1,0 +1,112 @@
+<div class="document-title">
+  <div class="container">
+    <h1>Position Detail</h1>
+  </div><!-- /.container -->
+</div><!-- /.document-title -->
+
+<div class="document-breadcrumb">
+  <div class="container">
+    <ul class="breadcrumb">
+      <li><a [routerLink]="['']">Home</a></li>
+      <li><a [routerLink]="['/jobs']">Jobs</a></li>
+      <li><a [routerLink]="['/job-detail/' + job_id]">{{model.name}}</a></li>
+    </ul>
+  </div><!-- /.container -->
+</div><!-- /.document-title -->
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8">
+      <div class="position-header">
+        <h1>
+          {{model.name}}
+          <span>Urgent</span>
+        </h1>
+
+        <h2>
+          <span class="position-header-company-image">
+            <a [routerLink]="['/company-detail/' + model.company.id]">
+              <caroimage [uri]="model.company.logo" [alt]="'assets/img/tmp/dropbox.png'"></caroimage>
+            </a>
+          </span>
+
+          <a [routerLink]="['/company-detail/' + model.company.id]">
+            {{model.company.name}}
+          </a>
+        </h2>
+      </div><!-- /.position-header -->
+
+      <div class="position-general-information">
+        <dl>
+          <dt>Location</dt>
+          <dd>{{model.location.address1}}, {{model.location.address2}}, {{model.location.city}}</dd>
+
+          <dt>Start Date</dt>
+          <dd>28/11/2015</dd>
+
+          <dt>Contract</dt>
+          <dd>{{model.type}}</dd>
+
+          <dt>Salary</dt>
+          <dd>{{model.salary_min}} ~ {{model.salary_max}}</dd>
+        </dl>
+      </div><!-- /.position-general-information -->
+
+      <h3 class="page-header">Description</h3>
+      <p>{{model.summary_1}}</p>
+      <p>{{model.summary_2}}</p>
+      <p>{{model.summary_3}}</p>
+
+      <h3 class="page-header">Other benefits</h3>
+
+      <div>{{model.detail}}</div>
+    </div><!-- /.col-* -->
+
+    <div class="col-sm-4">
+      <div class="company-card">
+        <div class="company-card-image">
+          <span>{{model.company.name}}</span>
+          <a [routerLink]="['/company-detail/' + model.company.id]">
+            <caroimage [uri]="model.company.logo" [alt]="'assets/img/tmp/dropbox.png'"></caroimage>
+          </a>
+        </div><!-- /.company-card-image -->
+
+        <div class="company-card-data">
+          <dl>
+            <dt>Website</dt>
+            <dd><a [href]="'http://' + model.company.website">{{model.company.website}}</a></dd>
+
+            <dt>E-mail</dt>
+            <dd><a href="#">{{model.location.email}}</a></dd>
+
+            <dt>Phone</dt>
+            <dd>{{model.location.phone}}</dd>
+
+            <dt>Address</dt>
+            <dd>
+              {{model.location.address1}}, {{model.location.address2}},<br>
+              {{model.location.state}}, {{model.location.city}}
+            </dd>
+          </dl>
+        </div><!-- /.company-card-data -->
+      </div><!-- /.company-card -->
+
+
+      <div class="widget">
+        <h2>Apply For Position</h2>
+
+        <form method="get" action="?">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Your E-mail">
+          </div><!-- /.form-group -->
+
+          <div class="form-group">
+            <textarea class="form-control" rows="5" placeholder="Your Message"></textarea>
+          </div><!-- /.form-group -->
+
+          <button class="btn btn-secondary pull-right" type="submit">Apply Now</button>
+        </form>
+      </div><!-- /.widget -->
+    </div><!-- /.col-* -->
+  </div><!-- /.row -->
+</div><!-- /.container -->

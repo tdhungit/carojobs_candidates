@@ -1,0 +1,401 @@
+<div class="hero-content">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6 col-md-6">
+        <h1>Say Hello to Universal Job Portal HTML Template</h1>
+        <h2>Well trusted and verified companies all around the world are using our job platform to find best employees. Start your change by clicking at "Add Resume".</h2>
+
+        <a href="create-resume.html" class="hero-content-action">Upload Resume</a>
+      </div><!-- /.col-* -->
+
+      <div class="col-sm-6 col-md-5 col-md-offset-1">
+        <div class="hero-content-carousel">
+          <h2>Happening Right Now</h2>
+
+          <ul class="cycle-slideshow vertical"
+              data-cycle-fx="carousel"
+              data-cycle-slides="li"
+              data-cycle-carousel-visible="7"
+              data-cycle-carousel-vertical="true">
+            <li *ngFor="let job of jobs.results"><a [routerLink]="['/company-detail/' + job.company.id]">{{job.company.name}}</a> is looking for {{job.name}}</li>
+          </ul>
+
+          <a [routerLink]="['/jobs']" class="hero-content-show-all">Show All</a>
+        </div><!-- /.hero-content-content -->
+      </div><!-- /.col-* -->
+    </div><!-- /.row -->
+  </div><!-- /.container -->
+</div><!-- /.hero-content -->
+
+<div class="stats">
+  <div class="container">
+    <div class="row">
+      <div class="stat-item col-sm-4" data-to="123012">
+        <strong id="stat-item-1">0</strong>
+        <span>Jobs Added</span>
+      </div><!-- /.col-* -->
+
+      <div class="stat-item col-sm-4" data-to="187432">
+        <strong id="stat-item-2">0</strong>
+        <span>Active Resumes</span>
+      </div><!-- /.col-* -->
+
+      <div class="stat-item col-sm-4" data-to="140312">
+        <strong id="stat-item-3">0</strong>
+        <span>Positions Matched</span>
+      </div><!-- /.col-* -->
+    </div><!-- /.row -->
+  </div><!-- /.container -->
+</div><!-- /.stats -->
+
+<div class="container">
+  <div class="filter">
+    <h2>Search for a Job</h2>
+    <form method="get" action="?">
+      <div class="row">
+        <div class="form-group col-sm-5">
+          <input type="text" class="form-control" placeholder="New York City, NY">
+        </div><!-- /.form-group -->
+
+        <div class="form-group col-sm-5">
+          <input type="text" class="form-control" placeholder="Android Developers">
+        </div><!-- /.form-group -->
+
+        <div class="form-group col-sm-2">
+          <button type="submit" class="btn btn-block btn-secondary">Search</button>
+        </div><!-- /.form-group -->
+      </div><!-- /.row -->
+
+      <ul class="filter-list">
+        <li *ngFor="let item of categories">
+          <a [routerLink]="['/jobs/' + item.slug]">
+            {{item.name}} <span class="filter-list-count">({{item.job_count}})</span>
+          </a>
+        </li>
+      </ul>
+
+      <hr>
+
+      <div class="filter-actions">
+        <a [routerLink]="['/jobs']">All Jobs</a> <span class="filter-separator">/</span>
+        <a [routerLink]="['/companies']">All Companies</a>
+      </div><!-- /.filter -->
+    </form>
+  </div><!-- /.filter -->
+
+
+  <div class="row">
+    <div class="col-sm-6">
+      <h2 class="page-header">Popular Companies</h2>
+
+      <div class="companies-list">
+        <div *ngFor="let item of popularCompanies" class="companies-list-item">
+          <div class="companies-list-item-image">
+            <a [routerLink]="['/company-detail/' + item.company.id]">
+              <caroimage [uri]="item.company.logo"></caroimage>
+            </a>
+          </div><!-- /.companies-list-item-image -->
+          <div class="companies-list-item-heading">
+            <h2><a [routerLink]="['/company-detail/' + item.company.id]">{{item.company.name}}</a></h2>
+            <h3>{{item.address1}}, {{item.address2}}, {{item.city}}</h3>
+          </div><!-- /.companies-list-item-heading -->
+          <div class="companies-list-item-count">
+            <a [routerLink]="['/company-detail/' + item.company.id]">{{item.count}} open positions</a>
+          </div><!-- /.positions-list-item-count -->
+        </div><!-- /.companies-list-item -->
+      </div><!-- /.companies-list -->
+    </div><!-- /.col-* -->
+
+    <div class="col-sm-6">
+      <h2 class="page-header">Recent Job Offers</h2>
+
+      <div class="positions-list">
+        <div *ngFor="let item of newJobs" class="positions-list-item">
+          <h2>
+            <a [routerLink]="['/job-detail/' + item.id]">{{item.name}}</a>
+          </h2>
+          <h3><span><img src="assets/img/tmp/instagram.png" alt=""></span>
+            {{item.location.address1}}, {{item.location.address2}}, {{item.location.city}}
+            <br>
+          </h3>
+          <div class="position-list-item-date">{{item.created_date|date:'MM/dd/yyyy'}}</div><!-- /.position-list-item-date -->
+          <div class="position-list-item-action"><a [routerLink]="['/job-detail/' + item.id]">Save Position</a></div><!-- /.position-list-item-action -->
+        </div><!-- /.position-list-item -->
+      </div><!-- /.positions-list -->
+    </div><!-- /.col-* -->
+  </div><!-- /.row -->
+
+  <div class="panels-highlighted">
+    <div class="row">
+      <div class="panel-highlighted-wrapper col-sm-6">
+        <div class="panel-highlighted-inner panel-highlighted-secondary">
+          <h2>Hire an employee</h2>
+
+          <p>
+            Vivamus congue rhoncus sem et placerat. Fusce nec nunc lobortis lorem ultrices facilisis. Ut dapibus blandit nunc, et consectetur dui.
+          </p>
+
+          <a [href]="employer_register" class="btn btn-white">Sign up as company</a>
+        </div><!-- /.panel-inner -->
+      </div><!-- /.panel-wrapper -->
+
+      <div class="panel-highlighted-wrapper col-sm-6">
+        <div class="panel-highlighted-inner panel-highlighted-primary panel">
+          <h2>Looking for a job</h2>
+
+          <p>
+            Vivamus congue rhoncus sem et placerat. Fusce nec nunc lobortis lorem ultrices facilisis. Ut dapibus blandit nunc, et consectetur dui.
+          </p>
+
+          <a [routerLink]="['/register']" class="btn btn-white">Sign up as employee</a>
+        </div><!-- /.panel-inner -->
+      </div><!-- /.panel-wrapper -->
+    </div><!-- /.row-->
+  </div><!-- /.panels -->
+
+
+  <div class="page-title">
+    <h2>Recent From Blog</h2>
+
+    <div class="row">
+      <div class="col-sm-8 col-sm-offset-2">
+        <p>
+          Donec tincidunt felis quam, eu tempus purus finibus in. Curabitur hendrerit, odio in viverra interdum, lorem velit scelerisque ipsum, a sagittis ligula leo in dolor. Etiam vestibulum.
+        </p>
+      </div><!-- /.col-* -->
+    </div><!-- /.row -->
+  </div><!-- /.page-title -->
+
+  <div class="posts">
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <div class="post-box">
+          <div class="post-box-image">
+            <a [routerLink]="['/blog/' + blogs.post_box.id]">
+              <caroimage [uri]="blogs.post_box.image" [alt]="'assets/img/tmp/blog-1.jpg'"></caroimage>
+            </a>
+          </div><!-- /.post-box-image -->
+
+          <div class="post-box-content">
+            <h2><a [routerLink]="['/blog/' + blogs.post_box.id]">{{blogs.post_box.name}}</a></h2>
+
+            <p>{{blogs.post_box.summary}}</p>
+
+            <a [routerLink]="['/blog/' + blogs.post_box.id]" class="post-box-read-more">Read More</a>
+          </div><!-- /.post-box-content -->
+        </div><!-- /.post-box -->
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <div class="post-box post-box-small" *ngFor="let item of blogs.post_box_small">
+          <div class="post-box-image">
+            <a [routerLink]="['//blog/' + item.id]">
+              <caroimage [uri]="item.image" [alt]="'assets/img/tmp/blog-2.jpg'"></caroimage>
+            </a>
+          </div><!-- /.post-box-image -->
+
+          <div class="post-box-content">
+            <h2><a [routerLink]="['//blog/' + item.id]">{{item.name}}</a></h2>
+
+            <p>{{item.summary | truncate : 50}}</p>
+          </div><!-- /.post-box-content -->
+        </div><!-- /.post-box -->
+      </div><!-- /.col-sm-6 -->
+    </div><!-- /.row -->
+  </div><!-- /.posts-->
+
+
+  <div class="panels">
+    <div class="row">
+      <div class="panel-wrapper col-sm-4">
+        <div class="panel-inner">
+          <h2>Why Profession?</h2>
+
+          <ul>
+            <li><i class="fa fa-check"></i> Clean &amp; Corporate webdesign</li>
+            <li><i class="fa fa-check"></i> Well coded HTML template</li>
+            <li><i class="fa fa-check"></i> Multiple Layout Options</li>
+          </ul>
+        </div><!-- /.panel-inner -->
+      </div><!-- /.panel-wrapper -->
+
+      <div class="panel-wrapper col-sm-4">
+        <div class="panel-inner">
+          <h2>Main Features</h2>
+
+          <ul>
+            <li><i class="fa fa-check"></i> Bootstrap 3.x &amp; SASS</li>
+            <li><i class="fa fa-check"></i> Super lighting page speed</li>
+            <li><i class="fa fa-check"></i> Well documented code</li>
+          </ul>
+        </div><!-- /.panel-inner -->
+      </div><!-- /.panel-wrapper -->
+
+      <div class="panel-wrapper col-sm-4">
+        <div class="panel-inner">
+          <h2>Transparent Pricing</h2>
+
+          <p>Are you intersted in our services? Don't hesitate and contact us.</p>
+          <a href="pricing.html" class="panel-show-more">Check Pricing</a>
+        </div><!-- /.panel-inner -->
+      </div><!-- /.panel-wrapper -->
+    </div><!-- /.row -->
+  </div><!-- /.panels -->
+
+  <div class="block background-secondary fullwidth candidate-title">
+    <div class="page-title">
+      <h2>Find Your Best Candidate</h2>
+
+      <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+          <p>
+            Donec tincidunt felis quam, eu tempus purus finibus in. Curabitur hendrerit, odio in viverra interdum, lorem velit scelerisque ipsum, a sagittis ligula leo in dolor. Etiam vestibulum.
+          </p>
+        </div><!-- /.col-* -->
+      </div><!-- /.row -->
+    </div><!-- /.page-title -->
+  </div><!-- /.fullwidth -->
+
+  <div class="row mt-60">
+
+
+    <div class="candidate-boxes">
+
+
+
+      <div class="col-sm-3 col-md-2">
+        <div class="candidate-box">
+          <div class="candidate-box-image">
+            <a href="resume.html">
+              <img src="assets/img/tmp/resume-1.jpg" alt="Peter Ruck">
+            </a>
+          </div><!-- /.candidate-box-image -->
+
+          <div class="candidate-box-content">
+            <h2>Peter Ruck</h2>
+            <h3>Java Developer</h3>
+          </div><!-- /.candidate-box-content -->
+        </div><!-- /.candidate-box -->
+      </div><!-- /.col-* -->
+
+
+
+      <div class="col-sm-3 col-md-2">
+        <div class="candidate-box">
+          <div class="candidate-box-image">
+            <a href="resume.html">
+              <img src="assets/img/tmp/resume-2.jpg" alt="Linda Young">
+            </a>
+          </div><!-- /.candidate-box-image -->
+
+          <div class="candidate-box-content">
+            <h2>Linda Young</h2>
+            <h3>PR Manager</h3>
+          </div><!-- /.candidate-box-content -->
+        </div><!-- /.candidate-box -->
+      </div><!-- /.col-* -->
+
+
+
+      <div class="col-sm-3 col-md-2">
+        <div class="candidate-box">
+          <div class="candidate-box-image">
+            <a href="resume.html">
+              <img src="assets/img/tmp/resume-3.jpg" alt="Britney Doe">
+            </a>
+          </div><!-- /.candidate-box-image -->
+
+          <div class="candidate-box-content">
+            <h2>Britney Doe</h2>
+            <h3>Data Mining</h3>
+          </div><!-- /.candidate-box-content -->
+        </div><!-- /.candidate-box -->
+      </div><!-- /.col-* -->
+
+
+
+      <div class="col-sm-3 col-md-2">
+        <div class="candidate-box">
+          <div class="candidate-box-image">
+            <a href="resume.html">
+              <img src="assets/img/tmp/resume-4.jpg" alt="Andrew Man">
+            </a>
+          </div><!-- /.candidate-box-image -->
+
+          <div class="candidate-box-content">
+            <h2>Andrew Man</h2>
+            <h3>Python Developer</h3>
+          </div><!-- /.candidate-box-content -->
+        </div><!-- /.candidate-box -->
+      </div><!-- /.col-* -->
+
+
+
+      <div class="col-sm-3 col-md-2">
+        <div class="candidate-box">
+          <div class="candidate-box-image">
+            <a href="resume.html">
+              <img src="assets/img/tmp/resume.jpg" alt="Elliot Sarah Scott">
+            </a>
+          </div><!-- /.candidate-box-image -->
+
+          <div class="candidate-box-content">
+            <h2>Elliot Sarah Scott</h2>
+            <h3>Data Analytist</h3>
+          </div><!-- /.candidate-box-content -->
+        </div><!-- /.candidate-box -->
+      </div><!-- /.col-* -->
+
+
+
+      <div class="col-sm-3 col-md-2">
+        <div class="candidate-box">
+          <div class="candidate-box-image">
+            <a href="resume.html">
+              <img src="assets/img/tmp/resume-1.jpg" alt="Peter Ruck">
+            </a>
+          </div><!-- /.candidate-box-image -->
+
+          <div class="candidate-box-content">
+            <h2>Peter Ruck</h2>
+            <h3>Java Developer</h3>
+          </div><!-- /.candidate-box-content -->
+        </div><!-- /.candidate-box -->
+      </div><!-- /.col-* -->
+
+    </div><!-- /.candidate-boxes -->
+  </div><!-- /.row -->
+
+
+  <div class="partners">
+    <a href="#">
+      <img src="assets/img/tmp/partner-1.jpg" alt="">
+    </a>
+
+    <a href="#">
+      <img src="assets/img/tmp/partner-2.jpg" alt="">
+    </a>
+
+    <a href="#">
+      <img src="assets/img/tmp/partner-3.jpg" alt="">
+    </a>
+
+    <a href="#">
+      <img src="assets/img/tmp/partner-4.jpg" alt="">
+    </a>
+
+    <a href="#">
+      <img src="assets/img/tmp/partner-5.jpg" alt="">
+    </a>
+  </div><!-- /.partners -->
+
+</div><!-- /.container -->
+
+<div class="cta-text">
+  <div class="container">
+    <div class="cta-text-inner">
+      <div class="cta-text-before">I want to</div><!-- /.cta-large-before -->
+
+      <a href="candidates.html" class="btn btn-secondary">Hire Employee</a> or <a href="positions.html" class="btn btn-secondary">Find Job</a>
+    </div><!-- /.cta-text-inner -->
+  </div><!-- /.container -->
+</div><!-- /.cta-text -->
